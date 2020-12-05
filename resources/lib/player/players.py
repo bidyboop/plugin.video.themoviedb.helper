@@ -475,8 +475,8 @@ class Players(object):
         # If PlayMedia method chosen re-route to Player()
         if action:
             resolve_to_dummy(handle, self.dummy_duration)  # If we're calling external we need to resolve to dummy
-            xbmc.Player().play(action, listitem)
-            kodi_log(['lib.player - playing path with xbmc.Player()\n', try_decode(listitem.getPath())], 1)
+            xbmc.executebuiltin(try_encode(action)) 
+            kodi_log(['lib.player - finished executing action\n',action], 1)
             return
 
         # Otherwise we have a url we can resolve to
